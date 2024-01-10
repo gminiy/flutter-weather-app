@@ -13,8 +13,8 @@ class HourlyWeatherRepositoryImpl implements HourlyWeatherRepository {
 
   @override
   Future<HourlyWeatherModel> getHourlyWeather({
-    required int latitude,
-    required int longitude,
+    required num latitude,
+    required num longitude,
   }) async {
     final response =
         await _api.getHourlyWeather(latitude: latitude, longitude: longitude);

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/di/di_setup.dart';
+import 'package:flutter_weather_app/presentation/home/home_screen.dart';
 
 void main() {
+  diSetup();
   runApp(const MyApp());
 }
 
@@ -16,6 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      home: HomeScreen(),
     );
   }
 }

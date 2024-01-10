@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/di/di_setup.dart';
 import 'package:flutter_weather_app/presentation/home/home_screen.dart';
+import 'package:flutter_weather_app/presentation/home/home_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   diSetup();
@@ -14,12 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: HomeScreen(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: ChangeNotifierProvider(
+          create: (_) => getIt<HomeViewModel>(),
+          child: HomeScreen(),
+        ));
   }
 }

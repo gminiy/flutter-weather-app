@@ -3,7 +3,7 @@ import 'package:flutter_weather_app/domain/model/hourly_weather_model.dart';
 import 'package:flutter_weather_app/domain/model/weather_model.dart';
 import 'package:flutter_weather_app/domain/model/weather_unit_model.dart';
 
-extension HourlyModelMapper on OpenMeteoWeatherResponseDto {
+extension HourlyWeatherModelMapper on OpenMeteoWeatherResponseDto {
   HourlyWeatherModel toHourlyWeatherModel() {
     final List<WeatherModel> weatherModels = [];
     final WeatherUnitModel weatherUnitModel = hourlyUnits == null

@@ -1,4 +1,4 @@
-import 'package:flutter_weather_app/domain/model/weather_model.dart';
+import 'package:flutter_weather_app/domain/model/hourly_weather_model.dart';
 import 'package:flutter_weather_app/domain/repository/hourly_weather_repository.dart';
 
 class FetchAfterNowHourlyWeatherModelsUseCase {
@@ -8,7 +8,7 @@ class FetchAfterNowHourlyWeatherModelsUseCase {
     required HourlyWeatherRepository hourlyWeatherRepository,
   }) : _hourlyWeatherRepository = hourlyWeatherRepository;
 
-  Future<List<WeatherModel>> execute({
+  Future<HourlyWeatherModel> execute({
     required num latitude,
     required num longitude,
   }) async {
@@ -17,10 +17,10 @@ class FetchAfterNowHourlyWeatherModelsUseCase {
       longitude: longitude,
     );
 
-    final hourlyWeatherModelsAfterNow = hourlyWeatherModel.weatherModels
+    final weatherModelsAfterNow = hourlyWeatherModel.weatherModels
         .where((e) => e.time.isAfter(DateTime.now()))
         .toList();
 
-    return hourlyWeatherModelsAfterNow;
+    return hourlyWeatherModel.copyWith(weatherModels: weatherModelsAfterNow);
   }
 }

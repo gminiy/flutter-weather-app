@@ -17,7 +17,7 @@ class HomeViewModel extends ChangeNotifier {
             fetchAfterNowHourlyWeatherModelsUseCase;
 
   Future<void> fetchHourlyWeatherFromNow() async {
-    final hourlyWeatherModelsAfterNow =
+    final hourlyWeatherModelAfterNow =
         await _fetchAfterNowHourlyWeatherModelsUseCase.execute(
             latitude: 12, longitude: 12);
     final List<DateTime> timeList = [];
@@ -26,7 +26,7 @@ class HomeViewModel extends ChangeNotifier {
     final List<num> windSpeedList = [];
     final List<num> pressureList = [];
 
-    for (WeatherModel weatherModel in hourlyWeatherModelsAfterNow) {
+    for (WeatherModel weatherModel in hourlyWeatherModelAfterNow.weatherModels) {
       timeList.add(weatherModel.time);
       temperatureList.add(weatherModel.temperature);
       humidityList.add(weatherModel.humidity);
@@ -40,6 +40,10 @@ class HomeViewModel extends ChangeNotifier {
       temperatureList: temperatureList,
       timeList: timeList,
       windSpeedList: windSpeedList,
+      temperatureUnit: hourlyWeatherModelAfterNow.weatherUnitModel.temperature,
+      humidityUnit: hourlyWeatherModelAfterNow.weatherUnitModel.humidity,
+      windSpeedUnit: hourlyWeatherModelAfterNow.weatherUnitModel.windSpeed,
+      pressureUnit: hourlyWeatherModelAfterNow.weatherUnitModel.pressure,
     );
     notifyListeners();
   }

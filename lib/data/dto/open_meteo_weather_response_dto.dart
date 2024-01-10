@@ -23,6 +23,12 @@ class OpenMeteoWeatherResponseDto {
   }
   num? latitude;
   num? longitude;
+
+  @override
+  String toString() {
+    return 'OpenMeteoWeatherResponseDto{latitude: $latitude, longitude: $longitude, generationtimeMs: $generationtimeMs, utcOffsetSeconds: $utcOffsetSeconds, timezone: $timezone, timezoneAbbreviation: $timezoneAbbreviation, elevation: $elevation, hourlyUnits: $hourlyUnits, hourly: $hourly}';
+  }
+
   num? generationtimeMs;
   num? utcOffsetSeconds;
   String? timezone;
@@ -70,6 +76,12 @@ class Hourly {
   }
   List<String>? time;
   List<num>? temperature2m;
+
+  @override
+  String toString() {
+    return 'Hourly{time: $time, temperature2m: $temperature2m, weathercode: $weathercode, relativehumidity2m: $relativehumidity2m, windspeed10m: $windspeed10m, pressureMsl: $pressureMsl}';
+  }
+
   List<num>? weathercode;
   List<num>? relativehumidity2m;
   List<num>? windspeed10m;
@@ -123,4 +135,8 @@ class HourlyUnits {
     return map;
   }
 
+  @override
+  String toString() {
+    return 'HourlyUnits{time: $time, temperature2m: $temperature2m, weathercode: $weathercode, relativehumidity2m: $relativehumidity2m, windspeed10m: $windspeed10m, pressureMsl: $pressureMsl}';
+  }
 }

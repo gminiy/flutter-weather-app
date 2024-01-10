@@ -24,7 +24,7 @@ extension HourlyModelMapper on OpenMeteoWeatherResponseDto {
 
     for (int i = 0; i < hourly!.time!.length; i++) {
       weatherModels.add(WeatherModel(
-          time: DateTime.parse(hourly!.time![0]),
+          time: DateTime.parse(hourly!.time![i]),
           temperature: hourly!.temperature2m?[i] ?? 0,
           humidity: hourly!.relativehumidity2m?[i] ?? 0,
           windSpeed: hourly!.windspeed10m?[i] ?? 0,

@@ -14,7 +14,7 @@ class HourlyWeatherModel with _$HourlyWeatherModel {
     required final num latitude,
     required final num longitude,
     required final WeatherUnitModel weatherUnitModel,
-    required final List<WeatherModel> weatherModel,
+    required final List<WeatherModel> weatherModels,
   }) = _HourlyWeatherModel;
 
   factory HourlyWeatherModel.fromJson(Map<String, Object?> json) => _$HourlyWeatherModelFromJson(json);
